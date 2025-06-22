@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>بَصيرة – منصة ذكاء أعمال لمنشئتك</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+  <style>
+    :root {
+      --primary-color: #00635D;
+      --secondary-color: #00A79D;
+      --accent-color: #FF6B6B;
+      --dark-color: #0F2F2F;
+      --light-color: #F8F9FA;
+      --text-color: #2D2D2D;
+      --text-light: #6C757D;
+    }
+    
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    
+    /* Enhanced Navbar */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1rem 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+    
+    .nav-link {
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      margin: 0 0.2rem;
+      position: relative;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      right: 0;
+      background-color: var(--secondary-color);
+      transition: width 0.3s ease;
+      border-radius: 3px;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+      left: 0;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--dark-color);
+      border-color: var(--dark-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 99, 93, 0.2);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 99, 93, 0.2);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(247, 251, 251, 0.9) 0%, rgba(232, 248, 247, 0.9) 100%);
+      padding: 8rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 167, 157, 0.1) 0%, rgba(0, 167, 157, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--dark-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .hero-image {
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Features Section */
+    .features-section {
+      padding: 6rem 0;
+      background-color: white;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark-color);
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 167, 157, 0.2);
+    }
+    
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 1rem;
+    }
+    
+    .feature-text {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 6rem 0;
+      background-color: #F8FAFC;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before {
+      content: '"';
+      font-size: 4rem;
+      position: absolute;
+      top: -1rem;
+      right: -1rem;
+      color: rgba(0, 167, 157, 0.1);
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 0.3rem;
+    }
+    
+    .testimonial-position {
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+    
+    /* Pricing Section */
+    .pricing-section {
+      padding: 6rem 0;
+      background-color: white;
+    }
+    
+    .pricing-card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: white;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-header {
+      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    }
+    
+    .pricing-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 0;
+    }
+    
+    .pricing-period {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .pricing-body {
+      padding: 2rem;
+      flex-grow: 1;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+    
+    .pricing-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-right: 1.5rem;
+      color: var(--text-light);
+    }
+    
+    .pricing-features li::before {
+      content: "✓";
+      color: var(--secondary-color);
+      font-weight: bold;
+      position: absolute;
+      right: 0;
+    }
+    
+    .pricing-cta {
+      padding: 0 2rem 2rem;
+      text-align: center;
+    }
+    
+    .pricing-highlight {
+      border: 2px solid var(--secondary-color);
+      position: relative;
+    }
+    
+    .pricing-highlight .pricing-header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    }
+    
+    .pricing-highlight .pricing-title,
+    .pricing-highlight .pricing-period {
+      color: white;
+    }
+    
+    .pricing-highlight .pricing-price {
+      color: white;
+    }
+    
+    .pricing-highlight .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+    }
+    
+    .pricing-highlight .btn-primary:hover {
+      background-color: var(--light-color);
+      color: var(--primary-color);
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+    
+    /* Partners Section */
+    .partners-section {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.partner-logo {
+  height: 60px;
+  /* opacity: 0.8; تعديل الشفافية */
+  transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, rgba(247, 251, 251, 0.9) 0%, rgba(232, 248, 247, 0.9) 100%);
+    }
+    
+    .contact-form {
+      background-color: white;
+      border-radius: 15px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-control {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 0.25rem rgba(0, 167, 157, 0.25);
+    }
+    
+    /* Newsletter Section */
+    .newsletter-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .newsletter-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .newsletter-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .newsletter-text {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .newsletter-input {
+      padding: 1rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .newsletter-btn {
+      background-color: var(--dark-color);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .newsletter-btn:hover {
+      background-color: #001A1A;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 5rem 0 2rem;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+  .footer-logo::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;  /* لتقريب الخط من النص */
+  right: 0;
+  width: 60px;   /* يمكنك زيادة العرض إذا أردت خطاً أطول */
+  height: 3px;   /*  السمك  */
+  background-color: var(--secondary-color); 
+  border-radius: 1px; /* تقليل نصف قطر الزوايا */
+}
+
+    .footer-text {
+      opacity: 0.7;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-right: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    .footer-bottom a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-bottom a:hover {
+      color: var(--secondary-color);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 991.98px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .feature-card {
+        margin-bottom: 1.5rem;
+      }
+      
+      .testimonial-card {
+        margin-bottom: 1.5rem;
+      }
+      
+      .pricing-card {
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    /* Animations */
+    .animate-delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .animate-delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .animate-delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo.png" alt="بصيرة - شعار الشركة" class="img-fluid" style="height: 40px; margin-left: 10px;">
+      <span class="fw-bold fs-3">بَصيرة</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="#why">لماذا بَصيرة</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#solutions">الحلول</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">المدونة</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#affiliate">التسويق بالعمولة</a>
+        </li>
+      </ul>
+      
+       <div class="d-flex align-items-center">
+        <a href="login-en.html" class="btn btn-outline-primary me-3">تسجيل الدخول</a>
+        <div class="dropdown">
+          <button class="btn btn-sm dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-globe me-1"></i> English
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href="index.html"><span class="fi fi-sa me-2"></span> العربية</a></li>
+            <li><a class="dropdown-item" href="index-en.html"><span class="fi fi-us me-2"></span> English</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-1 text-center text-lg-end mb-5 mb-lg-0">
+        <img src="img.webp" alt="بَصيرة - لوحة التحكم" class="img-fluid hero-image floating">
+      </div>
+      
+      <div class="col-lg-6 order-lg-0">
+        <h1 class="hero-title animate__animated animate__fadeInUp">عزز نمو أعمالك واتخذ قرارات في منتهى الوضوح</h1>
+        <p class="hero-subtitle animate__animated animate__fadeInUp animate-delay-1">
+          زد مبيعاتك، تنبأ بسلوكيات الطلب وقم بتحسين مؤشرات الأداء من خلال إتخاذ قرارات نمو تعتمد على البيانات باستخدام قوة تقنيات ذكاء الأعمال.
+        </p>
+        <div class="d-flex gap-3 animate__animated animate__fadeInUp animate-delay-2">
+          <a href="#contact" class="btn btn-primary btn-lg px-4">اطلب عرضك التجريبي</a>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Section -->
+<section class="partners-section py-5">
+  <div class="container">
+    <h3 class="text-center mb-5">انضم لشركائنا</h3>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="aldyar.webp" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="puregy.jpg" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="shahm.jpg" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="vogue.png" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="landscape.png" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Section -->
+<section id="why" class="features-section">
+  <div class="container">
+    <h2 class="section-title text-center animate__animated animate__fadeIn">ماذا نقدم</h2>
+    
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-eye"></i>
+          </div>
+          <h3 class="feature-title">منظور شامل</h3>
+          <p class="feature-text">
+            قم ببناء استراتيجيات النمو على حقائق وأرقام، تساعد رؤى تقنيات ذكاء الأعمال في بلورة مسؤولي المالية والتسويق والمبيعات على اكتساب فهم شامل وأعمق للمتغيرات اليومية عبر جميع وحدات المطعم
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-1">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h3 class="feature-title">تنبؤ</h3>
+          <p class="feature-text">
+            كن مستعداً للغد ومتقدماً بخطوة عن المنافسين من خلال التنبؤ بالاتجاهات المستقبلية والتغيرات السلوكية لمطعمك باستخدام محرك بلورة القائم على الذكاء الاصطناعي
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-2">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-percent"></i>
+          </div>
+          <h3 class="feature-title">عروض ترويجية</h3>
+          <p class="feature-text">
+            روّج لحِزم المنتجات التي تلقى تفضيلاً لدى عملائك، حيث يساعدك تحليل سلة المشتريات من بلورة على رصد المنتجات التي تُشترى معاً بدلاً من بيعها بشكل منفصل لتحسين هوامش الربح والنمو
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-people"></i>
+          </div>
+          <h3 class="feature-title">تقسيم العملاء</h3>
+          <p class="feature-text">
+            افهم سلوك عميلك بشكل أعمق وأسرع مع محرك تقسيم شرائح العملاء الفوري من بلورة، لتحديد الفرص التسويقية وتطوير الحملات الإعلانية الفعالة
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-1">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-shield-lock"></i>
+          </div>
+          <h3 class="feature-title">أمان</h3>
+          <p class="feature-text">
+            يتم حماية جميع بياناتك من خلال تشفير عالي المستوى، لتحصل وبكل أمان على أقصى استفادة من الرؤى العميقة لاتخاذ القرارات الاستراتيجية
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-2">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-bar-chart-line"></i>
+          </div>
+          <h3 class="feature-title">تحليلات متقدمة</h3>
+          <p class="feature-text">
+            احصل على تحليلات متعمقة لأداء عملك مع مقارنات بين الفروع والمنتجات والتصنيفات لمساعدتك في اتخاذ قرارات أكثر ذكاءً
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container text-center">
+    <h2 class="text-white mb-5 animate__animated animate__fadeIn">كيف يمكن لنجاحك أن يبدو؟</h2>
+    
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 animate__animated animate__fadeIn">
+        <div class="stat-number">148%+</div>
+        <div class="stat-label">معدل زيادة سعر السلة لكل طلب</div>
+      </div>
+      
+      <div class="col-md-4 mb-4 mb-md-0 animate__animated animate__fadeIn animate-delay-1">
+        <div class="stat-number">2.6+</div>
+        <div class="stat-label">تضاعف متوسط عدد الأصناف في السلة من 1.6 إلى 2.6 صنف</div>
+      </div>
+      
+      <div class="col-md-4 animate__animated animate__fadeIn animate-delay-2">
+        <div class="stat-number">52%+</div>
+        <div class="stat-label">نمو متوسط إنفاق المستهلك</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="section-title text-center animate__animated animate__fadeIn">ما يقوله عملاؤنا</h2>
+    
+    <div class="row g-4">
+      <div class="col-lg-6 animate__animated animate__fadeInLeft">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            تضاعفت المبيعات الخاصة بنا وذلك عبر اتباع التوصيات المقدمة من بلورة، حيث زاد معدل الوصول للعملاء المستهدفين المتشابهين لسلوك قاعدة عملائنا، كما ارتفع معدل إتمام صفقات البيع بفضل العروض الخاصة المقترحة من قبل بلورة!
+          </p>
+          <div class="d-flex align-items-center">
+            <div>
+              <h5 class="testimonial-author">عبدالعزيز الجبوري</h5>
+              <p class="testimonial-position">شريك مؤسس، كوفيماتكس</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 animate__animated animate__fadeInRight">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            ساهمت حلول بلورة بمساعدتنا على اتخاذ قررات متمحورة حول العملاء ، مما ساهم في رفع معدلات الاحتفاظ بالعملاء وتصميم العروض الخاصة وبرامج المكافآت وفق بيانات سلوك العملاء وأداء أعمالنا.
+          </p>
+          <div class="d-flex align-items-center">
+            <div>
+              <h5 class="testimonial-author">ماهر الحجيلي</h5>
+              <p class="testimonial-position">شريك مؤسس، ريت كافيه</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solutions Section -->
+<section id="solutions" class="pricing-section">
+  <div class="container">
+    <h2 class="section-title text-center animate__animated animate__fadeIn">الحلول</h2>
+    <p class="text-center text-muted mb-5 animate__animated animate__fadeIn animate-delay-1">اختر وحدة التحليل التي تناسب احتياجات عملك</p>
+    
+    <div class="text-center mb-4">
+      <div class="btn-group" role="group" aria-label="Pricing toggle">
+        <input type="radio" class="btn-check" name="pricing" id="monthly" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="monthly">دفع شهريا</label>
+        
+        <input type="radio" class="btn-check" name="pricing" id="yearly" autocomplete="off">
+        <label class="btn btn-outline-primary" for="yearly">ادفع سنويا ووفر 12%</label>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Basic Plan -->
+      <div class="col-lg-4 animate__animated animate__fadeIn">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">الباقة الأساسية</h3>
+            <div class="pricing-price">249 ر.س</div>
+            <div class="pricing-period">شهرياً</div>
+          </div>
+          <div class="pricing-body">
+            <p class="text-muted">تحليلات أساسية لفهم أداء أعمالك</p>
+            <ul class="pricing-features">
+              <li>1 فرع</li>
+              <li>2 مستخدمين</li>
+              <li>إدارة مؤشرات أداء جميع الفروع</li>
+              <li>تعيين مدير مخصص لكل فرع</li>
+              <li>عرض جميع قنوات بيع تطبيقات التوصيل في صفحة واحدة</li>
+              <li>تحليل سلوك العملاء</li>
+            </ul>
+          </div>
+          <div class="pricing-cta">
+            <a href="#" class="btn btn-primary w-100">ابدا الآن</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Growth Plan -->
+      <div class="col-lg-4 animate__animated animate__fadeIn animate-delay-1">
+        <div class="pricing-card pricing-highlight">
+          <div class="popular-badge">الأكثر طلبًا</div>
+          <div class="pricing-header">
+            <h3 class="pricing-title">باقة النمو</h3>
+            <div class="pricing-price">449 ر.س</div>
+            <div class="pricing-period">شهرياً</div>
+          </div>
+          <div class="pricing-body">
+            <p class="text-white">تحليلات متقدمة لرفع مستوى نموك</p>
+            <ul class="pricing-features">
+              <li>حتى 3 فروع</li>
+              <li>4 مستخدمين</li>
+              <li>جميع مميزات الأساسية +</li>
+              <li>إعادة استهداف العملاء وفقاً للسلوك الشرائي</li>
+              <li>تحليلات المقارنة للمنتجات والتصنيفات والفروع</li>
+              <li>تحديد ومتابعة أهداف المبيعات لكل فرع</li>
+              <li>تحليل عميق لهندسة المنيو لغرض زيادة الربحية</li>
+              <li>تحليل عميق لسلة مشتريات العملاء والمنتجات التي تشترى معاً</li>
+            </ul>
+          </div>
+          <div class="pricing-cta">
+            <a href="#" class="btn btn-light w-100">ابدا الآن</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Advanced Plan -->
+      <div class="col-lg-4 animate__animated animate__fadeIn animate-delay-2">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">المتقدمة</h3>
+            <div class="pricing-price">899 ر.س</div>
+            <div class="pricing-period">شهرياً</div>
+          </div>
+          <div class="pricing-body">
+            <p class="text-muted">تحليلات شاملة لاستدامة أعمالك</p>
+            <ul class="pricing-features">
+              <li>حتى 5 فروع</li>
+              <li>6 مستخدمين</li>
+              <li>جميع مميزات النمو +</li>
+              <li>ميزة التنبؤ بالمبيعات والطلب</li>
+              <li>تحليل تكاليف المنتجات والوصفات</li>
+              <li>المشتريات المجمّعة</li>
+              <li>حساب وإدارة نقطة التعادل</li>
+              <li>التنبيهات الاستباقية والإشعارات</li>
+              <li>تحليل التسويات المالية لقنوات المبيعات وتطبيقات التوصيل</li>
+              <li>التحقق من الامتثال والمطابقات الضريبية</li>
+            </ul>
+          </div>
+          <div class="pricing-cta">
+            <a href="#" class="btn btn-primary w-100">ابدا الآن</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5 animate__animated animate__fadeIn animate-delay-3">
+      <div class="card border-primary border-2 p-4 d-inline-block">
+        <h4 class="text-primary mb-3">الباقة التجريبية</h4>
+        <p class="mb-3">كل ميزات الباقة الأساسية وباقة النمو</p>
+        <p class="text-muted mb-4">مزيج من التحليلات الأساسية والمتقدمة لاكتشاف إمكانات أعمالك</p>
+        <p class="fw-bold text-primary">فترة تجريبية لمدة 14 يوماً</p>
+        <a href="#" class="btn btn-outline-primary">ابدأ تجربتك المجانية</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="contact-form animate__animated animate__fadeIn">
+          <h2 class="text-center mb-4">اطلب عرضك التجريبي</h2>
+          <p class="text-center text-muted mb-5">مزيج من التحليلات الأساسية والمتقدمة لاكتشاف إمكانات أعمالك</p>
+          
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="fullName" class="form-label">الاسم الكامل *</label>
+                <input type="text" class="form-control" id="fullName" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">البريد الالكتروني *</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label">رقم الجوال *</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              <div class="col-md-6">
+                <label for="brand" class="form-label">اسم العلامة التجارية *</label>
+                <input type="text" class="form-control" id="brand" required>
+              </div>
+              <div class="col-md-6">
+                <label for="region" class="form-label">اسم المنطقة *</label>
+                <select class="form-select" id="region" required>
+                  <option value="">اختر المنطقة</option>
+                  <option>منطقة الرياض</option>
+                  <option>منطقة مكة المكرمة</option>
+                  <option>منطقة المدينة المنورة</option>
+                  <option>منطقة القصيم</option>
+                  <option>المنطقة الشرقية</option>
+                  <option>منطقة عسير</option>
+                  <option>منطقة تبوك</option>
+                  <option>منطقة حائل</option>
+                  <option>منطقة الحدود الشمالية</option>
+                  <option>منطقة جازان</option>
+                  <option>منطقة نجران</option>
+                  <option>منطقة الباحة</option>
+                  <option>منطقة الجوف</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="branches" class="form-label">عدد فروع علامتك التجارية *</label>
+                <input type="number" class="form-control" id="branches" required>
+              </div>
+              <div class="col-md-6">
+                <label for="activity" class="form-label">النشاط التجاري *</label>
+                <select class="form-select" id="activity" required>
+                  <option value="">اختر النشاط التجاري</option>
+                  <option>مطعم</option>
+                  <option>مطبخ سحابي</option>
+                  <option>مقهى</option>
+                  <option>متجر تجزئة</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="pos" class="form-label">نظام نقاط البيع *</label>
+                <select class="form-select" id="pos" required>
+                  <option value="">اختر نظام نقاط البيع</option>
+                  <option>فودكس</option>
+                  <option>مرن</option>
+                  <option>قيود</option>
+                  <option>ريفيل</option>
+                  <option>أرقامي</option>
+                  <option>فودو</option>
+                  <option>فليفرز</option>
+                  <option>رتم</option>
+                  <option>أخرى</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">
+                    بتحديد هذا المربع، أؤكد أنني قد قرأت وفهمت وأوافق على 
+                    <a href="#" class="text-primary">الشروط والأحكام</a> و 
+                    <a href="#" class="text-primary">سياسة الخصوصية</a>.
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg px-5">قدم طلبك</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="newsletter-title animate__animated animate__fadeIn">اشترك في نشرتنا الإخبارية</h2>
+        <p class="newsletter-text animate__animated animate__fadeIn animate-delay-1">
+          احصل على تحديث أسبوعي حول منتجاتنا في بريدك الإلكتروني
+        </p>
+        
+        <form class="animate__animated animate__fadeIn animate-delay-2">
+          <div class="input-group mb-3 mx-auto" style="max-width: 500px;">
+            <input type="email" class="form-control newsletter-input" placeholder="أدخل بريدك الإلكتروني" aria-label="Email" aria-describedby="button-subscribe">
+            <button class="btn newsletter-btn" type="button" id="button-subscribe">اشترك الآن</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+       <span class="footer-logo" style="color: white; font-size: 1.8rem; font-weight: 700; display: inline-block; margin-bottom: 1.5rem; position: relative; padding-bottom: 10px;">بصيرة</span>
+        <p class="footer-text">
+         بصيرة ليست مجرد أرقام... هي نافذتك لعالم الأعمال الحقيقي.
+تحوّل الفوضى الرقمية إلى خرائط واضحة، وتكشف لك ما وراء البيانات، فتفهم عمق حركة عملائك، وتتنبأ بخطوات الغد.
+هنا تبدأ رحلة التحكم بالبيانات، لتصنع قرارات لا ثنسى، وتكتب قصة نجاحك الخاصة.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+        </div>
+      </div>
+      
+      <div class="col-lg-2 col-md-4">
+        <h4 class="footer-title">الروابط</h4>
+        <ul class="footer-links">
+          <li><a href="#">لماذا بَصيرة </a></li>
+          <li><a href="#">الحلول</a></li>
+          <li><a href="#">المدونة</a></li>
+          <li><a href="#">التسويق بالعمولة</a></li>
+          <li><a href="#">الوظائف</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-4">
+        <h4 class="footer-title">المساعدة</h4>
+        <ul class="footer-links">
+          <li><a href="#">الأسئلة الشائعة</a></li>
+          <li><a href="#">الدعم الفني</a></li>
+          <li><a href="#">تواصل معنا</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">الشروط والأحكام</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-4 col-md-4">
+        <h4 class="footer-title">تواصل معنا</h4>
+        <ul class="footer-links">
+          <li><i class="bi bi-telephone me-2"></i> 920031412</li>
+          <li><i class="bi bi-envelope me-2"></i> info@Baseera.io</li>
+          <li><i class="bi bi-geo-alt me-2"></i> الرياض، المملكة العربية السعودية</li>
+        </ul>
+        
+        <h5 class="mt-4 mb-3">متكامل مع</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <img src="Foodics_logo.jpg" alt="POS System" class="img-fluid" style="height: 30px;">
+          <img src="odoo.png" alt="POS System" class="img-fluid" style="height: 30px;">
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="mb-0">
+        جميع الحقوق محفوظة لشركة بَصيرة لتقنية المعلومات ذ.م.م © 2025 | صنع في الرياض 🇸🇦
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+        
+        // Update URL without refreshing
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          location.hash = targetId;
+        }
+      }
+    });
+  });
+
+  // Animation on scroll
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.animate__animated');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (elementPosition < screenPosition) {
+        const animationClass = element.classList.contains('animate__fadeIn') ? 'animate__fadeIn' : 
+                              element.classList.contains('animate__fadeInUp') ? 'animate__fadeInUp' :
+                              element.classList.contains('animate__fadeInLeft') ? 'animate__fadeInLeft' :
+                              element.classList.contains('animate__fadeInRight') ? 'animate__fadeInRight' : '';
+        
+        if (animationClass) {
+          element.classList.add(animationClass.replace('animate__', ''));
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', animateOnScroll);
+  window.addEventListener('load', animateOnScroll);
+</script>
+</body>
+</html>

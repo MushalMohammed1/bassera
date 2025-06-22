@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>تسجيل دخول - بصيرة</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #F6F4EF;
+    }
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-box {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .login-logo {
+      width: 70px;
+      height: 70px;
+      background-image: url('Logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0 auto 20px;
+    }
+    .form-control:focus {
+      border-color: #5DAFAE;
+      box-shadow: 0 0 0 0.2rem rgba(93, 175, 174, 0.25);
+    }
+    .btn-primary {
+      background-color: #5DAFAE;
+      border-color: #5DAFAE;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #4d9e9d;
+      border-color: #4d9e9d;
+    }
+    a {
+      color: #5DAFAE;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <div class="login-box">
+    <div class="login-logo"></div>
+    <h3 class="mb-4 fw-bold">تسجيل دخول إلى بصيرة</h3>
+    <form>
+      <div class="mb-3 text-start">
+        <label for="email" class="form-label">البريد الإلكتروني</label>
+        <input type="email" class="form-control" id="email" placeholder="example@email.com" required>
+      </div>
+      <div class="mb-3 text-start">
+        <label for="password" class="form-label">كلمة المرور</label>
+        <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+      </div>
+      <div class="mb-3 text-end">
+        <a href="#" class="text-decoration-none">نسيت كلمة المرور؟</a>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">دخول</button>
+    </form>
+    <p class="mt-4">ليس لديك حساب؟ <a href="#" class="text-decoration-underline">سجل الآن</a></p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Baseera – Business Intelligence for Your Brand</title>
+  
+  <!-- CSS Links -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+  <style>
+    :root {
+      --primary-color: #00635D;
+      --secondary-color: #00A79D;
+      --accent-color: #FF6B6B;
+      --dark-color: #0F2F2F;
+      --light-color: #F8F9FA;
+      --text-color: #2D2D2D;
+      --text-light: #6C757D;
+    }
+    
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--light-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    
+    /* Enhanced Navbar */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1rem 0;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+    
+    .nav-link {
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      margin: 0 0.2rem;
+      position: relative;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--secondary-color);
+      transition: width 0.3s ease;
+      border-radius: 3px;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--dark-color);
+      border-color: var(--dark-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 99, 93, 0.2);
+    }
+    
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 99, 93, 0.2);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(247, 251, 251, 0.9) 0%, rgba(232, 248, 247, 0.9) 100%);
+      padding: 8rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0, 167, 157, 0.1) 0%, rgba(0, 167, 157, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--dark-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .hero-image {
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+      transform: perspective(1000px) rotateY(5deg);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Features Section */
+    .features-section {
+      padding: 6rem 0;
+      background-color: white;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--dark-color);
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 167, 157, 0.2);
+    }
+    
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 1rem;
+    }
+    
+    .feature-text {
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 6rem 0;
+      background-color: #F8FAFC;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before {
+      content: '"';
+      font-size: 4rem;
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      color: rgba(0, 167, 157, 0.1);
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 0.3rem;
+    }
+    
+    .testimonial-position {
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+    
+    /* Pricing Section */
+    .pricing-section {
+      padding: 6rem 0;
+      background-color: white;
+    }
+    
+    .pricing-card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: white;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-header {
+      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    }
+    
+    .pricing-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 0;
+    }
+    
+    .pricing-period {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .pricing-body {
+      padding: 2rem;
+      flex-grow: 1;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+    
+    .pricing-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-light);
+    }
+    
+    .pricing-features li::before {
+      content: "✓";
+      color: var(--secondary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    
+    .pricing-cta {
+      padding: 0 2rem 2rem;
+      text-align: center;
+    }
+    
+    .pricing-highlight {
+      border: 2px solid var(--secondary-color);
+      position: relative;
+    }
+    
+    .pricing-highlight .pricing-header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    }
+    
+    .pricing-highlight .pricing-title,
+    .pricing-highlight .pricing-period {
+      color: white;
+    }
+    
+    .pricing-highlight .pricing-price {
+      color: white;
+    }
+    
+    .pricing-highlight .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+    }
+    
+    .pricing-highlight .btn-primary:hover {
+      background-color: var(--light-color);
+      color: var(--primary-color);
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 1;
+    }
+    
+    /* Partners Section */
+    .partners-section {
+      padding: 4rem 0;
+      background-color: white;
+    }
+    
+    .partner-logo {
+      height: 60px;
+      transition: all 0.3s ease;
+    }
+    
+    .partner-logo:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, rgba(247, 251, 251, 0.9) 0%, rgba(232, 248, 247, 0.9) 100%);
+    }
+    
+    .contact-form {
+      background-color: white;
+      border-radius: 15px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-control {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 0.25rem rgba(0, 167, 157, 0.25);
+    }
+    
+    /* Newsletter Section */
+    .newsletter-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .newsletter-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .newsletter-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .newsletter-text {
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+    
+    .newsletter-input {
+      padding: 1rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .newsletter-btn {
+      background-color: var(--dark-color);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .newsletter-btn:hover {
+      background-color: #001A1A;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 5rem 0 2rem;
+    }
+    
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .footer-logo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      border-radius: 1px;
+    }
+    
+    .footer-text {
+      opacity: 0.7;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    .footer-bottom a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-bottom a:hover {
+      color: var(--secondary-color);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 991.98px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .feature-card {
+        margin-bottom: 1.5rem;
+      }
+      
+      .testimonial-card {
+        margin-bottom: 1.5rem;
+      }
+      
+      .pricing-card {
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    /* Animations */
+    .animate-delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .animate-delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .animate-delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="logo.png" alt="Baseera - Company Logo" class="img-fluid" style="height: 40px; margin-right: 10px;">
+      <span class="fw-bold fs-3">Baseera</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="#why">Why Baseera?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#solutions">Solutions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#affiliate">Affiliate Marketing</a>
+        </li>
+      </ul>
+      
+      <div class="d-flex align-items-center">
+        <a href="login-en.html" class="btn btn-outline-primary me-3">Login</a>
+        <div class="dropdown">
+          <button class="btn btn-sm dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-globe me-1"></i> English
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href="index.html"><span class="fi fi-sa me-2"></span> العربية</a></li>
+            <li><a class="dropdown-item" href="index-en.html"><span class="fi fi-us me-2"></span> English</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+        <img src="img.webp" alt="Baseera Dashboard" class="img-fluid hero-image floating">
+      </div>
+      
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="hero-title animate__animated animate__fadeInUp">Enhance Your Business Growth with Clear Decisions</h1>
+        <p class="hero-subtitle animate__animated animate__fadeInUp animate-delay-1">
+          Increase your sales, predict demand behaviors and optimize KPIs by making data-driven growth decisions using the power of business intelligence technologies.
+        </p>
+        <div class="d-flex gap-3 animate__animated animate__fadeInUp animate-delay-2">
+          <a href="#contact" class="btn btn-primary btn-lg px-4">Request Your Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Section -->
+<section class="partners-section py-5">
+  <div class="container">
+    <h3 class="text-center mb-5">Join Our Partners</h3>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="aldyar.webp" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="puregy.jpg" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="shahm.jpg" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="vogue.png" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+      <div class="col-6 col-md-2 text-center mb-4">
+        <img src="landscape.png" alt="Partner Logo" class="img-fluid partner-logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Section -->
+<section id="why" class="features-section">
+  <div class="container">
+    <h2 class="section-title text-center animate__animated animate__fadeIn">What We Offer</h2>
+    
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-eye"></i>
+          </div>
+          <h3 class="feature-title">Comprehensive Perspective</h3>
+          <p class="feature-text">
+            Build growth strategies on facts and figures. Baseera's business intelligence insights help finance, marketing, and sales teams gain deeper understanding of daily variables across all restaurant units.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-1">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h3 class="feature-title">Forecasting</h3>
+          <p class="feature-text">
+            Be prepared for tomorrow and stay one step ahead of competitors by predicting future trends and behavioral changes for your restaurant using Baseera's AI-powered engine.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-2">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-percent"></i>
+          </div>
+          <h3 class="feature-title">Promotions</h3>
+          <p class="feature-text">
+            Promote product bundles preferred by your customers. Baseera's basket analysis helps identify products bought together rather than selling them separately to improve profit margins and growth.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-people"></i>
+          </div>
+          <h3 class="feature-title">Customer Segmentation</h3>
+          <p class="feature-text">
+            Understand your customer behavior more deeply and faster with Baseera's instant customer segmentation engine to identify marketing opportunities and develop effective advertising campaigns.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-1">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-shield-lock"></i>
+          </div>
+          <h3 class="feature-title">Security</h3>
+          <p class="feature-text">
+            All your data is protected through high-level encryption, allowing you to safely maximize the benefits of deep insights for strategic decision-making.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate-delay-2">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="bi bi-bar-chart-line"></i>
+          </div>
+          <h3 class="feature-title">Advanced Analytics</h3>
+          <p class="feature-text">
+            Get in-depth performance analysis of your business with comparisons between branches, products, and categories to help you make smarter decisions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container text-center">
+    <h2 class="text-white mb-5 animate__animated animate__fadeIn">What Could Your Success Look Like?</h2>
+    
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0 animate__animated animate__fadeIn">
+        <div class="stat-number">148%+</div>
+        <div class="stat-label">Increase in average basket price per order</div>
+      </div>
+      
+      <div class="col-md-4 mb-4 mb-md-0 animate__animated animate__fadeIn animate-delay-1">
+        <div class="stat-number">2.6+</div>
+        <div class="stat-label">Doubled average number of items in basket from 1.6 to 2.6 items</div>
+      </div>
+      
+      <div class="col-md-4 animate__animated animate__fadeIn animate-delay-2">
+        <div class="stat-number">52%+</div>
+        <div class="stat-label">Growth in average consumer spending</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="section-title text-center animate__animated animate__fadeIn">What Our Clients Say</h2>
+    
+    <div class="row g-4">
+      <div class="col-lg-6 animate__animated animate__fadeInLeft">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            Our sales doubled by following the recommendations provided by Baseera, as the conversion rate to targeted customers similar to our customer base behavior increased, and the sales completion rate improved thanks to the special offers suggested by Baseera!
+          </p>
+          <div class="d-flex align-items-center">
+            <div>
+              <h5 class="testimonial-author">Abdulaziz Al-Jubouri</h5>
+              <p class="testimonial-position">Co-Founder, Covimatics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 animate__animated animate__fadeInRight">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            Baseera solutions helped us make customer-centric decisions, which contributed to increasing customer retention rates and designing special offers and rewards programs based on customer behavior and our business performance data.
+          </p>
+          <div class="d-flex align-items-center">
+            <div>
+              <h5 class="testimonial-author">Maher Al-Hujaili</h5>
+              <p class="testimonial-position">Co-Founder, Ritz Cafe</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solutions Section -->
+<section id="solutions" class="pricing-section">
+  <div class="container">
+    <h2 class="section-title text-center animate__animated animate__fadeIn">Solutions</h2>
+    <p class="text-center text-muted mb-5 animate__animated animate__fadeIn animate-delay-1">Choose the analysis module that suits your business needs</p>
+    
+    <div class="text-center mb-4">
+      <div class="btn-group" role="group" aria-label="Pricing toggle">
+        <input type="radio" class="btn-check" name="pricing" id="monthly" autocomplete="off" checked>
+        <label class="btn btn-outline-primary" for="monthly">Monthly Payment</label>
+        
+        <input type="radio" class="btn-check" name="pricing" id="yearly" autocomplete="off">
+        <label class="btn btn-outline-primary" for="yearly">Pay Annually (Save 12%)</label>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Basic Plan -->
+      <div class="col-lg-4 animate__animated animate__fadeIn">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">Basic Package</h3>
+            <div class="pricing-price">249 SAR</div>
+            <div class="pricing-period">Monthly</div>
+          </div>
+          <div class="pricing-body">
+            <p class="text-muted">Basic analytics to understand your business performance</p>
+            <ul class="pricing-features">
+              <li>1 Branch</li>
+              <li>2 Users</li>
+              <li>Manage KPIs for all branches</li>
+              <li>Assign dedicated manager per branch</li>
+              <li>View all delivery app sales channels on one page</li>
+              <li>Customer behavior analysis</li>
+            </ul>
+          </div>
+          <div class="pricing-cta">
+            <a href="#" class="btn btn-primary w-100">Start Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Growth Plan -->
+      <div class="col-lg-4 animate__animated animate__fadeIn animate-delay-1">
+        <div class="pricing-card pricing-highlight">
+          <div class="popular-badge">Most Popular</div>
+          <div class="pricing-header">
+            <h3 class="pricing-title">Growth Package</h3>
+            <div class="pricing-price">449 SAR</div>
+            <div class="pricing-period">Monthly</div>
+          </div>
+          <div class="pricing-body">
+            <p class="text-white">Advanced analytics to elevate your growth</p>
+            <ul class="pricing-features">
+              <li>Up to 3 Branches</li>
+              <li>4 Users</li>
+              <li>All Basic Package features +</li>
+              <li>Retarget customers based on purchasing behavior</li>
+              <li>Comparative analysis of products, categories & branches</li>
+              <li>Set & track sales targets per branch</li>
+              <li>Deep menu engineering analysis to increase profitability</li>
+              <li>Deep analysis of customer shopping baskets & product bundles</li>
+            </ul>
+          </div>
+          <div class="pricing-cta">
+            <a href="#" class="btn btn-light w-100">Start Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Advanced Plan -->
+      <div class="col-lg-4 animate__animated animate__fadeIn animate-delay-2">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-title">Advanced Package</h3>
+            <div class="pricing-price">899 SAR</div>
+            <div class="pricing-period">Monthly</div>
+          </div>
+          <div class="pricing-body">
+            <p class="text-muted">Comprehensive analytics for business sustainability</p>
+            <ul class="pricing-features">
+              <li>Up to 5 Branches</li>
+              <li>6 Users</li>
+              <li>All Growth Package features +</li>
+              <li>Sales & demand forecasting feature</li>
+              <li>Product cost & recipe analysis</li>
+              <li>Bulk purchases</li>
+              <li>Calculate & manage break-even point</li>
+              <li>Proactive alerts & notifications</li>
+              <li>Financial reconciliation analysis for sales channels & delivery apps</li>
+              <li>Compliance verification & tax matching</li>
+            </ul>
+          </div>
+          <div class="pricing-cta">
+            <a href="#" class="btn btn-primary w-100">Start Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5 animate__animated animate__fadeIn animate-delay-3">
+      <div class="card border-primary border-2 p-4 d-inline-block">
+        <h4 class="text-primary mb-3">Trial Package</h4>
+        <p class="mb-3">All features of Basic and Growth packages</p>
+        <p class="text-muted mb-4">Mix of basic and advanced analytics to discover your business potential</p>
+        <p class="fw-bold text-primary">14-day free trial period</p>
+        <a href="#" class="btn btn-outline-primary">Start Your Free Trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="contact-form animate__animated animate__fadeIn">
+          <h2 class="text-center mb-4">Request Your Demo</h2>
+          <p class="text-center text-muted mb-5">Mix of basic and advanced analytics to discover your business potential</p>
+          
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="fullName" class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="fullName" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email *</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="col-md-6">
+                <label for="phone" class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              <div class="col-md-6">
+                <label for="brand" class="form-label">Brand Name *</label>
+                <input type="text" class="form-control" id="brand" required>
+              </div>
+              <div class="col-md-6">
+                <label for="region" class="form-label">Region *</label>
+                <select class="form-select" id="region" required>
+                  <option value="">Select Region</option>
+                  <option>Riyadh Region</option>
+                  <option>Makkah Region</option>
+                  <option>Madinah Region</option>
+                  <option>Qassim Region</option>
+                  <option>Eastern Region</option>
+                  <option>Asir Region</option>
+                  <option>Tabuk Region</option>
+                  <option>Hail Region</option>
+                  <option>Northern Borders Region</option>
+                  <option>Jazan Region</option>
+                  <option>Najran Region</option>
+                  <option>Al-Baha Region</option>
+                  <option>Al-Jouf Region</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="branches" class="form-label">Number of Branches *</label>
+                <input type="number" class="form-control" id="branches" required>
+              </div>
+              <div class="col-md-6">
+                <label for="activity" class="form-label">Business Activity *</label>
+                <select class="form-select" id="activity" required>
+                  <option value="">Select Business Activity</option>
+                  <option>Restaurant</option>
+                  <option>Cloud Kitchen</option>
+                  <option>Cafe</option>
+                  <option>Retail Store</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="pos" class="form-label">POS System *</label>
+                <select class="form-select" id="pos" required>
+                  <option value="">Select POS System</option>
+                  <option>Foodics</option>
+                  <option>Flex</option>
+                  <option>Qoyod</option>
+                  <option>Reveel</option>
+                  <option>Arqami</option>
+                  <option>Fudo</option>
+                  <option>Flavers</option>
+                  <option>Retum</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">
+                    By checking this box, I confirm that I have read, understood and agree to the 
+                    <a href="#" class="text-primary">Terms & Conditions</a> and 
+                    <a href="#" class="text-primary">Privacy Policy</a>.
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg px-5">Submit Request</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="newsletter-title animate__animated animate__fadeIn">Subscribe to Our Newsletter</h2>
+        <p class="newsletter-text animate__animated animate__fadeIn animate-delay-1">
+          Get weekly updates about our products in your inbox
+        </p>
+        
+        <form class="animate__animated animate__fadeIn animate-delay-2">
+          <div class="input-group mb-3 mx-auto" style="max-width: 500px;">
+            <input type="email" class="form-control newsletter-input" placeholder="Enter your email" aria-label="Email" aria-describedby="button-subscribe">
+            <button class="btn newsletter-btn" type="button" id="button-subscribe">Subscribe Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <span class="footer-logo" style="color: white; font-size: 1.8rem; font-weight: 700; display: inline-block; margin-bottom: 1.5rem; position: relative; padding-bottom: 10px;">Baseera</span>
+        <p class="footer-text">
+          Baseera isn't just numbers... it's your window to the real business world.
+          Transform digital chaos into clear maps, reveal what lies behind data, understand your customers' movement, and predict tomorrow's steps.
+          Here begins your journey of data control, to make unforgettable decisions and write your own success story.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+        </div>
+      </div>
+      
+      <div class="col-lg-2 col-md-4">
+        <h4 class="footer-title">Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">Why Baseera?</a></li>
+          <li><a href="#">Solutions</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Affiliate Marketing</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-4">
+        <h4 class="footer-title">Help</h4>
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Technical Support</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-4 col-md-4">
+        <h4 class="footer-title">Contact Us</h4>
+        <ul class="footer-links">
+          <li><i class="bi bi-telephone me-2"></i> 920031412</li>
+          <li><i class="bi bi-envelope me-2"></i> info@baseera.io</li>
+          <li><i class="bi bi-geo-alt me-2"></i> Riyadh, Saudi Arabia</li>
+        </ul>
+        
+        <h5 class="mt-4 mb-3">Integrated With</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <img src="Foodics_logo.jpg" alt="POS System" class="img-fluid" style="height: 30px;">
+          <img src="odoo.png" alt="POS System" class="img-fluid" style="height: 30px;">
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="mb-0">
+        All rights reserved © Baseera IT Solutions LLC 2025 | Made in Riyadh 🇸🇦
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+        
+        // Update URL without refreshing
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          location.hash = targetId;
+        }
+      }
+    });
+  });
+
+  // Animation on scroll
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.animate__animated');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (elementPosition < screenPosition) {
+        const animationClass = element.classList.contains('animate__fadeIn') ? 'animate__fadeIn' : 
+                              element.classList.contains('animate__fadeInUp') ? 'animate__fadeInUp' :
+                              element.classList.contains('animate__fadeInLeft') ? 'animate__fadeInLeft' :
+                              element.classList.contains('animate__fadeInRight') ? 'animate__fadeInRight' : '';
+        
+        if (animationClass) {
+          element.classList.add(animationClass.replace('animate__', ''));
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', animateOnScroll);
+  window.addEventListener('load', animateOnScroll);
+</script>
+</body>
+</html>
